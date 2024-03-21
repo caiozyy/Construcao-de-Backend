@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.19.1",
+    "init": "^0.1.2"
+  },
+  "name": "pratica-05",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  }
+}

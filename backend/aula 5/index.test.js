@@ -12,6 +12,7 @@ async function() {
     .toMatch(/json/);
 });
 
+
 test("Deve retornar status 201 e um JSON no POST",
 async function() {
   const response = await request.post("/produtos")
@@ -74,5 +75,21 @@ async function() {
   const response = await request.delete("/produtos/100");
   expect(response.status).toBe(404);
   expect(response.headers['content-type'])
+    .toMatch(/json/);
+});
+
+test('Deve retornar com o status 204 e um JSON no DELETE',
+async function(){
+    const responce = await request.delete("/produtos/1");
+    expect (responce.status).toBe(204);
+    expect (responce.headers['content-type'])
+    .toMatch(/json/);
+});
+
+test('Deve retornar com o status 404 e um JSON no DELETE',
+async function(){
+    const responce = await request.delete("/produtos/100");
+    expect (responce.status).toBe(404);
+    expect (responce.headers['content-type'])
     .toMatch(/json/);
 });
