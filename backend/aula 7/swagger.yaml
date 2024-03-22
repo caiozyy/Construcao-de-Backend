@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info: 
+  title: Minha API REST
+  description: Uma API REST desenvolvida com Express
+  version: 0.1.0
+servers: 
+  - url: http://localhost:3000/
+    description: Ambiente de desenvolvimento
+  - url: http://apihml.meudominio.com/v2
+    description: Ambiente de homologação
+  - url: http://api.meudominio.com/v1
+    description: Ambiente de produção
+tags:
+  - name: produtos
+  - name: fornecedores
+  - name: transportadoras
+paths:
+  /produtos:
+    get:
+      tags:
+        - produtos
+    post:
+      tags:
+        - produtos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object 
+              properties:
+                nome:
+                  type: string
+                preco:
+                  type: number
+      responses:
+        201: 
+          description: Produto criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schema/Produto'
+        422:
+          description: Nome e preco são obrigatórios
+  /produtos/{produtoId}:
+    get:
+      tags:
+        - produtos
+    put:
+      tags:
+        - produtos
+    delete:
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          name: produtoId
+          type: integer
+          responses:
+          204:
+            description: Produto removido com sucesso
+          404:
+            description: Produto não encontrado
+            content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Mensagem'
+components:
+  schema:
+    Produto:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        preco:
+          type: number
+Mensagem:
+  type: object
+  properties: 
+    mgs:
+      type: string
