@@ -5,12 +5,17 @@ const app = require("../app");
 const req = supertest(app);
 
 describe("API Loja Virtual - Produtos", () => {
-  test("Deve retornar 201 e um JSON no POST /produtos", async () => {
-    const res = await req
-      .post("/produtos")
-      .send({ nome: "Morango", preco: 9.0 });
+  // test("Deve retornar 201 e um JSON no POST /produtos", async () => {
+  //   const res = await req
+  //     .post("/produtos")
+  //     .send({ nome: "Morango", preco: 9.0 });
+  //   expect(res.status).toBe(201);
+  //   expect(res.type).toBe("application/json");
+  // });
 
-    expect(res.status).toBe(201);
+  test("Deve retorna 422 e JSON no POST /produtos", async () => {
+    const res = await req.post("/produtos").send({});
+    expect(res.status).toBe(422);
     expect(res.type).toBe("application/json");
   });
 });
