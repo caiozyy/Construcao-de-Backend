@@ -35,4 +35,17 @@ describe("API Loja Virtual - Produtos", () => {
     expect(res.status).toBe(200);
     expect(res.type).toBe("application/json");
   });
+
+  test("Deve retornar 404 e JSON no GET /produtos/id", async () => {
+    const res = await req.get('/produtos/663e07803dafbc71e0e86c8c')
+    expect(res.status).toBe(404);
+    expect(res.type).toBe("application/json");
+
+  });
+
+  test("Deve retornar 200 e JSON no PUT /prdutos/id", async () => {
+    const res = await req.put(`/produtos/${id}`).send ({nome: "Morango Azul", preco: 8.9})
+    expect(res.status).toBe(200);
+    expect(res.type).toBe("application/json");
+  });
 });

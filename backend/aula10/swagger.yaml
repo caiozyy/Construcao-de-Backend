@@ -50,6 +50,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Produto'
+        400: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+        404: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
 components:
   schemas:
     Produto:
