@@ -44,12 +44,60 @@ paths:
         - in: path
           name: id 
           type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Produto'
       responses: 
         200:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Produto'
+        400: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+        404: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+    put: 
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          name: id 
+          type: string
+      responses: 
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+        404: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+        422: 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mensagem'
+    delete: 
+      tags:
+        - produtos
+      parameters:
+        - in: path
+          name: id 
+          type: string
+      responses: 
+        200:
+          content:
         400: 
           content:
             application/json:
